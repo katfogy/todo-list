@@ -1,19 +1,18 @@
 
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-body{
+body {
   font-family: 'Poppins', sans-serif;
   padding: 10px;
 }
 
-.container{
+.container {
   margin: 20px auto;
   max-width: 800px;
   padding: 20px 30px;
@@ -21,27 +20,25 @@ body{
   border-radius: 5px;
 }
 
-.top{
+.top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.to-do-add{
+.to-do-add {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.to-do-add{
   width: 100%;
 }
 
-.form{
+.form {
   width: 98%;
   margin-block: 20px;
 }
-input[type="text"]{
+
+input[type="text"] {
   line-height: 2;
   padding: 5px 10px;
   font-style: italic;
@@ -51,36 +48,38 @@ input[type="text"]{
   font-family: inherit;
 }
 
-i{
+i {
   cursor: pointer;
   font-size: 1.2rem;
 }
 
-i:hover{
+i:hover {
   color: red;
 }
 
-.to-do-clear{
+.to-do-clear {
   background-color: gainsboro;
   width: 100%;
   margin: 5px auto;
   display: block;
-  padding:  10px 20px;
+  padding: 10px 20px;
   border: none;
   font-size: 1.3rem;
   font-family: inherit;
   cursor: pointer;
-  transition: all 0.3s ease-in ;
+  transition: all 0.3s ease-in;
 }
 
-.to-do-clear:hover{
+.to-do-clear:hover {
   background-color: black;
   color: #ffff;
 }
-ul{
+
+ul {
   list-style-type: none;
 }
-.each-todo{
+
+.each-todo {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
@@ -91,7 +90,8 @@ ul{
   border-top: 1px solid gray;
   padding-block: 5px;
 }
-.fa-trash{
-position: absolute;
-right: 10px;
+
+.fa-trash {
+  position: absolute;
+  right: 10px;
 }
