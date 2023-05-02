@@ -1,2 +1,2 @@
 import './style.css';
-console.log("kater")
+console.log("gooooo")
