@@ -11,18 +11,16 @@
    <div class="container">
     <div class="top"><h1>Today's Todo</h1><i class="fa-solid fa-arrows-rotate"></i></div>
     <div class="to-do-add">
-        <form class="form">
+        <form class="form" method="POST">
           <input
             type="text"
             class="to-do-add-text"
             placeholder="Add to your list..."
-          />
+         id="create-todo" />
         </form>
-        <i class="fas fa-rotate-90 enter-btn">&#xf3be;</i>
+        <i id="create" class="fas fa-rotate-90 enter-btn">&#xf3be;</i>
       </div>
-  <ul class="to-do-list">
-    <li class="each-todo"><input type="checkbox"> <p>Eat Indomie</p><i class="fa-solid fa-trash"></i></li>
-    <li class="each-todo"><input type="checkbox"> <p>Buy Lamborgini</p><i class="fa-solid fa-trash"></i></li>
+  <ul class="to-do-list" id="to-do-list">
     
   </ul>
   <button class="to-do-clear">Clear all Completed</button>
