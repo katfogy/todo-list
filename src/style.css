@@ -95,3 +95,11 @@ ul {
   position: absolute;
   right: 10px;
 }
+
+.top{
+  color:  rgb(36, 3, 51);
+}
+
+.hidden {
+  display: none;
+}
