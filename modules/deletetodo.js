@@ -7,7 +7,7 @@ const deletetodo = () => {
     if (e.target.classList.contains('fa-trash')) {
       const { id } = e.target;
       let todos = JSON.parse(localStorage.getItem('todos')) || [];
-      todos = todos.filter((todo) => todo.index !== id);
+      todos = todos.filter((todo) => todo.index.toString() !== id);
       localStorage.setItem('todos', JSON.stringify(todos));
       const todo = new TodoList();
       todo.todosList();
