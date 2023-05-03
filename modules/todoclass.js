@@ -10,8 +10,10 @@ class TodoList {
     clearbtn.style.display = 'none';
     if (todos.length > 0) {
       this.id = 0;
-      alltodos.innerHTML = todos.map((todo) => ` <li class="each-todo"><input type="checkbox"> <p>${todo.description}</p><i class="fa-solid fa-trash"></i></li>`).join('');
+      alltodos.innerHTML = todos.map((todo) => ` <li class="each-todo"><input type="checkbox"> <p class="text-todo" id=${todo.index}>${todo.description}</p><i class="fa-solid fa-trash" id=${todo.index}></i></li>`).join('');
       clearbtn.style.display = 'block';
+    } else {
+      alltodos.innerHTML = ' <p>No Todo List added</p>';
     }
   }
 
@@ -29,7 +31,7 @@ class TodoList {
       localStorage.setItem('todos', JSON.stringify(Todos));
       this.description.value = '';
       this.todosList();
-      alert('Todo Added');
+      document.location.reload();
     }
   }
 }
