@@ -10,7 +10,15 @@ class TodoList {
     clearbtn.style.display = 'none';
     if (todos.length > 0) {
       this.id = 0;
-      alltodos.innerHTML = todos.map((todo) => ` <li class="each-todo"><input type="checkbox"> <p class="text-todo" id=${todo.index}>${todo.description}</p><i class="fa-solid fa-trash" id=${todo.index}></i></li>`).join('');
+      alltodos.innerHTML = todos.map((todo) => {
+        if (todo.completed === true) {
+          return `
+  <li class="each-todo"><input type="checkbox" class="mycheck" id=${todo.index}> <p class="text-todo linthrough" id=${todo.index}>${todo.description}</p><i class="fa-solid fa-trash" id=${todo.index}></i></li>`
+        } else {
+          return `
+  <li class="each-todo"><input type="checkbox" class="mycheck" id=${todo.index}> <p class="text-todo" id=${todo.index}>${todo.description}</p><i class="fa-solid fa-trash" id=${todo.index}></i></li>`
+        }
+      }).join('');
       clearbtn.style.display = 'block';
     } else {
       alltodos.innerHTML = ' <p>No Todo List added</p>';

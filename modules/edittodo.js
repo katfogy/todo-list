@@ -8,12 +8,13 @@ const updatetodo = (description, id) => {
     const search = Todos.find((todo) => todo.index.toString() === id);
     if (search !== undefined) {
       search.description = description;
-      search.id = id;
+      search.index = id;
       localStorage.setItem('todos', JSON.stringify(Todos));
     }
 
     const refresh = new TodoList();
     refresh.todosList();
+    document.location.reload();
   }
 };
 
