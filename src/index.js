@@ -4,11 +4,12 @@ import TodoList from '../modules/todoclass.js';
 import deletetodo from '../modules/deletetodo.js';
 import edittodo from '../modules/edittodo.js';
 import interacttodo from '../modules/interactivetodo.js';
+import clearcompleted from '../modules/clearcompleted.js';
 
 const todoclass = new TodoList();
 todoclass.todosList();
 addTodo();
-
 deletetodo();
 edittodo();
 interacttodo();
+clearcompleted();
