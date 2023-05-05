@@ -93,10 +93,10 @@ After you're finished please remove all the comments and instructions!
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="#"></a>
+## 🚀 Live Demo <a name="https://katfogy.github.io/todo-list/dist/"></a>
 
 
-- [[Live Demo Link](#)](Coming Soon)
+- [[Live Demo Link](https://katfogy.github.io/todo-list/dist/)]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
