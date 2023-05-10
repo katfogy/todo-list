@@ -1,7 +1,7 @@
 import TodoList from '../todoclass.js';
 import deletetodo from '../deletetodo.js';
 
-describe('check if addTask and removeTask methods work properly', () => {
+describe('check if addTask and removeTask methods work', () => {
   document.body.innerHTML = `<ul class="container list-none" id="container"><li class="singleLi" id="0">
     <div class="checking">
     <input type="text" id="addTo" name="addTo" placeholder="Add to your list...">
