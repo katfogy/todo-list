@@ -53,7 +53,6 @@ describe('check if addTask and removeTask methods work', () => {
     //  act
     deletetodo(0);
 
-    TodoList.todosList();
     // assert
     expect(listContainer.childElementCount).toBe(0); // remove item from listContainer
   });
