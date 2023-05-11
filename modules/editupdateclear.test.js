@@ -30,7 +30,7 @@ describe('implement edit the Task description and clear all ', () => {
   test('clear all the complete task', () => {
     expect(clearAll()).not.toBe([{
       id: 1,
-      task: 'Hello Kater',
+      task: 'Hello Nfair',
       status: false,
     }]);
   });
