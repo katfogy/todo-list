@@ -11,5 +11,4 @@ const deleteTask = (item) => {
   return newTodos;
 };
 
-exports.addTask = addTask;
-exports.deleteTask = deleteTask;
+module.exports= {addTask, deleteTask};
