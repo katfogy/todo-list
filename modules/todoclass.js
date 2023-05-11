@@ -14,10 +14,10 @@ class TodoList {
       for (let i = 0; i < todos.length; i += 1) {
         if (todos[i].completed === true) {
           content += `
-<li class="each-todo"><input type="checkbox" checked class="mycheck" id=${todos[i].index}> <p class="text-todo linthrough" id=${todos[i].index}>${todos[i].description}</p><i class="fa-solid fa-trash" id=${todos[i].index}></i></li>`;
+<li class="each-todo"><input type="checkbox" class="mycheck" id=${todos[i].index}> <p class="text-todo linthrough" id=${todos[i].index}>${todos[i].description}</p><i class="fa-solid fa-trash" id=${todos[i].index}></i></li>`;
         } else {
           content += `
-<li class="each-todo"><input type="checkbox"  class="mycheck" id=${todos[i].index}> <p class="text-todo" id=${todos[i].index}>${todos[i].description}</p><i class="fa-solid fa-trash" id=${todos[i].index}></i></li>`;
+<li class="each-todo"><input type="checkbox" class="mycheck" id=${todos[i].index}> <p class="text-todo" id=${todos[i].index}>${todos[i].description}</p><i class="fa-solid fa-trash" id=${todos[i].index}></i></li>`;
         }
       }
       alltodos.innerHTML = content;
@@ -46,4 +46,4 @@ class TodoList {
   }
 }
 
-module.exports = TodoList;
+export default TodoList;
