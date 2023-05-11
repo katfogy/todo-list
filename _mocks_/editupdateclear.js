@@ -18,4 +18,4 @@ const clearAll = () => {
   return exactTodo;
 };
 
-module.exports = {editTask, updateStatus, clearAll};
+module.exports = { editTask, updateStatus, clearAll };

@@ -4,7 +4,7 @@ describe('implement edit the Task description and clear all ', () => {
   test('edit the taks', () => {
     const editItem = editTask({
       id: 1,
-      task: 'Ok Alishah',
+      task: 'Ok Foga',
       status: false,
     });
     expect(editItem).toBe(editItem);
@@ -13,7 +13,7 @@ describe('implement edit the Task description and clear all ', () => {
   test('edit the taks', () => {
     const editItem = editTask({
       id: 1,
-      task: 'Ok Paul',
+      task: 'Ok Otmane',
       status: false,
     });
     expect(editItem).toBe(editItem);
@@ -22,7 +22,7 @@ describe('implement edit the Task description and clear all ', () => {
   test('update the status', () => {
     expect(updateStatus(1)).toStrictEqual({
       id: 1,
-      task: 'Ok Paul',
+      task: 'Ok Otmane',
       status: true,
     });
   });
@@ -30,7 +30,7 @@ describe('implement edit the Task description and clear all ', () => {
   test('clear all the complete task', () => {
     expect(clearAll()).not.toBe([{
       id: 1,
-      task: 'Hello Sirat',
+      task: 'Hello Kater',
       status: false,
     }]);
   });
