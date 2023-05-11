@@ -1,59 +1,97 @@
-import TodoList from '../todoclass.js';
-import deletetodo from '../deletetodo.js';
+import { parseInt } from 'lodash';
+import Selector from './selectors.js';
+import checkStatus from './statusCheck.js';
 
-describe('check if addTask and removeTask methods work', () => {
-  document.body.innerHTML = `<ul class="container list-none" id="container"><li class="singleLi" id="0">
-    <div class="checking">
-    <input type="text" id="addTo" name="addTo" placeholder="Add to your list...">
-    <input type="checkbox" class="checkbox" name="checkbox" />
-        <input type="text" class="task-input" value="eat breakfast">
-    </div>
-    <i class="fa-solid fa-trash-can icon delete"></i>
-</li></ul>`;
+const ObjectSelec = new Selector();
+export default class Todo {
+  constructor() {
+    this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+  }
 
-  test('Checking if addTask method is working properly and adding input value on click', () => {
-    // arrange
-    const inputAdd = document.getElementById('addTo');
-    inputAdd.value = 'hello boy';
-    //  act
-    const addTask = TodoList.createTodo();
-    // assert
-    expect(addTask).toEqual({
-      description: 'hello boy',
-      complete: false,
-      index: 0,
+  visable = () => {
+    if (this.todos.length === 0) {
+      ObjectSelec.clear.classList.add('display');
+    } else {
+      ObjectSelec.clear.classList.remove('display');
+    }
+  }
+
+  dispaly = () => {
+    ObjectSelec.todoBody.querySelector('.js-todo-list').innerHTML = '';
+    this.todos.forEach((todo) => {
+      const todoList = `<li data-id="${todo.id}" data-status="${todo.status}">
+      <label for="${todo.id}">
+      <input type="checkbox" class="check" id="${todo.id}" value="${todo.id}"
+      ${todo.status === 'completed'}/>
+      <input type="text" class="js-edit-input" value="${todo.task}"/>
+      </label>
+          <div class="action">
+          <button class="js-delete">
+              <i class="ri-delete-bin-fill"></i>
+          </button>
+          </div> 
+      </li>`;
+      ObjectSelec.todoBody.querySelector('.js-todo-list').innerHTML += todoList;
     });
-  });
-  test('Checking if task is getting added to local storage', () => {
-    // arrange
-    const object = {
-      description: 'what"s up',
-      complete: false,
-      index: 0,
-    };
-    localStorage.setItem('lion', JSON.stringify([object]));
-    //   act
-    const storage = localStorage.getItem('lion');
-    //   assert
-    expect(storage).toEqual(
-      JSON.stringify([
-        {
-          description: 'what"s up',
-          complete: false,
-          index: 0,
-        },
-      ]),
-    );
-  });
-  test('checking if removeTask removes the correct item in the array', () => {
-    // arrange
-    const listContainer = document.getElementById('container');
-    // assert
-    expect(listContainer.childElementCount).toBe(1); // currently one item in listContainer
-    //  act
-    deletetodo(0);
+    this.visable();
+  }
 
-    // assert
-    expect(listContainer.childElementCount).toBe(0); // remove item from listContainer
-  });
-});
+  addTask = (e) => {
+    e.preventDefault();
+    const todo = ObjectSelec.input.value;
+    if (!todo) return;
+    if (this.todos.length === 0) {
+      const myTodo = { id: 1, task: todo, status: false };
+      this.todos.push(myTodo);
+    } else {
+      const index = this.todos.length + 1;
+      const myTodo = { id: index, task: todo, status: false };
+      this.todos.push(myTodo);
+    }
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+    ObjectSelec.input.value = '';
+    this.dispaly();
+  }
+
+  deletTask = async (e) => {
+    const btndelete = e.target.closest('.js-delete');
+    if (!btndelete) return;
+    const { id } = btndelete.closest('li').dataset;
+    this.todos = this.todos.filter((todo) => parseInt(todo.id) !== parseInt(id));
+    this.todos.forEach((todo, id) => {
+      todo.id = id + 1;
+    });
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+    this.dispaly();
+    btndelete.closest('li').remove();
+    this.visable();
+  }
+
+  editTedxt = (id, e) => {
+    const { value } = e.target;
+    const index = this.todos.findIndex((todo) => parseInt(todo.id, 10) === parseInt(id, 10));
+    this.todos[index].task = value;
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  updateText = (e) => {
+    const inputEdit = e.target.closest('.js-edit-input');
+    const { id } = inputEdit.closest('li').dataset;
+    const exactInput = inputEdit.closest('li').querySelector('input[type="text"]');
+    exactInput.addEventListener('keyup', this.editTedxt.bind(e, id));
+  }
+
+  checkStatus = (e) => {
+    checkStatus(e, this.todos);
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  handleFormAction(e) {
+    const inputEdit = e.target.closest('.js-edit-input');
+    if (inputEdit) {
+      this.updateText(e);
+    }
+    this.deletTask(e);
+    this.checkStatus(e);
+  }
+}
