@@ -1,6 +1,6 @@
 import TodoList from './todoclass.js';
 
-const inputvalue = document .getElementById('create-todo');
+const inputvalue = document.getElementById('create-todo');
 const enterCreate = document.getElementById('create');
 const form = document.querySelector('.form');
 const addTodo = () => {
@@ -16,4 +16,4 @@ const addTodo = () => {
   });
 };
 
-module.exports= addTodo;
+module.exports = addTodo;
